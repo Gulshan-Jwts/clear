@@ -29,7 +29,8 @@ export function Stars({ tunnel, rotate }) {
 
     materialRef.current.uniforms.uViewportHeight.value =
       size.height * window.devicePixelRatio;
-  }, [size.height]);
+    console.log(size.height * window.devicePixelRatio)
+  }, [size.height]); 
 
   useEffect(() => {
     camera.rotation.y = 450 * (Math.PI / 180);
@@ -45,6 +46,11 @@ export function Stars({ tunnel, rotate }) {
       ease: "power3.out",
     });
   }, []);
+
+  // if (materialRef.current && pointsRef.current) {
+  //   console.log(pointsRef.current.material, materialRef.current);
+  //   console.log(pointsRef.current.material === materialRef.current);
+  // }
 
   const { positions, colors, sizes, shapes } = useMemo(() => {
     const starCount = tunnel.starCount;
@@ -153,6 +159,7 @@ export function Stars({ tunnel, rotate }) {
     // Update shader uniforms
     if (materialRef.current) {
       materialRef.current.uniforms.time.value = elapsedTime;
+      materialRef.current.uniformsNeedUpdate = true;
     }
     // Rotaion based on steering wheel
     const currentZ = pointsRef.current.rotation.z;
@@ -163,6 +170,14 @@ export function Stars({ tunnel, rotate }) {
       0.01
     );
   });
+
+  const uniforms = useMemo(
+    () => ({
+      time: { value: 0.0 },
+      uViewportHeight: { value: size.height * window.devicePixelRatio },
+    }),
+    [size.height]
+  );
 
   return (
     <points ref={pointsRef}>
@@ -196,7 +211,7 @@ export function Stars({ tunnel, rotate }) {
         ref={materialRef}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
-        uniforms={{ time: { value: 0.0 }, uViewportHeight: { value: 1 } }}
+        uniforms={uniforms}
         transparent
         depthWrite={false}
         vertexColors

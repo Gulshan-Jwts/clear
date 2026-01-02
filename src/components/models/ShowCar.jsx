@@ -98,22 +98,32 @@ function ShowCar(props) {
     };
   }, []);
 
-  const hdrTexture = useLoader(RGBELoader, "/hdri/showHdr2.hdr");
-  hdrTexture.mapping = THREE.EquirectangularReflectionMapping;
+  // const hdrTexture = useLoader(RGBELoader, "/hdri/showHdr2.hdr");
+  // hdrTexture.mapping = THREE.EquirectangularReflectionMapping;
 
-  const reflectiveMaterial = useMemo(
+  // const tempMaterial = useMemo(
+  //   () =>
+  //     new ShaderMaterial({
+  //       vertexShader: reflectVertex,
+  //       fragmentShader: reflectFrag,
+  //       uniforms: {
+  //         envMap: { value: hdrTexture },
+  //         cameraPosition: { value: new THREE.Vector3() },
+  //       },
+  //       side: THREE.DoubleSide,
+  //       transparent: false,
+  //     }),
+  //   [hdrTexture]
+  // );
+
+  const tempMaterial = useMemo(
     () =>
-      new ShaderMaterial({
-        vertexShader: reflectVertex,
-        fragmentShader: reflectFrag,
-        uniforms: {
-          envMap: { value: hdrTexture },
-          cameraPosition: { value: new THREE.Vector3() },
-        },
-        side: THREE.DoubleSide,
-        transparent: false,
+      new THREE.MeshStandardMaterial({
+        color: "#888888",
+        metalness: 0,
+        roughness: 1,
       }),
-    [hdrTexture]
+    []
   );
 
   useFrame(({ camera }) => {
@@ -124,9 +134,9 @@ function ShowCar(props) {
     if (isLocalActive) {
       isActive.current = false;
     }
-    if (reflectiveMaterial) {
-      reflectiveMaterial.uniforms.cameraPosition.value.copy(camera.position);
-    }
+    // if (tempMaterial) {
+    //   tempMaterial.uniforms.cameraPosition.value.copy(camera.position);
+    // }
     if (meshRef.current) {
       const targetPos = !isLocalActive ? activePos.current : normalPos.current;
 
@@ -252,14 +262,14 @@ function ShowCar(props) {
           receiveShadow
           visible={false}
           geometry={nodes.door001.geometry}
-          material={reflectiveMaterial}
+          material={tempMaterial}
         />
         <mesh
           castShadow
           receiveShadow
           visible={false}
           geometry={nodes.door002.geometry}
-          material={reflectiveMaterial}
+          material={tempMaterial}
         />
         <mesh
           castShadow
@@ -301,7 +311,7 @@ function ShowCar(props) {
           receiveShadow
           visible={false}
           geometry={nodes.mainBody.geometry}
-          material={reflectiveMaterial}
+          material={tempMaterial}
         />
         <group position={[0.016, -0.015, -0.011]}>
           <mesh

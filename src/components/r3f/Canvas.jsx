@@ -19,7 +19,7 @@ export function Canvas({ tunnel }) {
         outputColorSpace: THREE.LinearSRGBColorSpace,
         toneMappingExposure: 8.8,
       }}
-      style={{ background: "#08031aff" }}
+      style={{ background: "#100d2eff" }}
       dpr={Math.min(window.devicePixelRatio, 2)}
     >
       <Suspense fallback={null}>
