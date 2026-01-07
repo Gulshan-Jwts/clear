@@ -5,11 +5,12 @@ import { Stars } from "./Stars";
 import { TunnelRings } from "./TunnelRings";
 import * as Three from "three";
 
-export function Tunnel({ tunnel, rotation }) {
+export function Tunnel({ tunnel, rotation, touchListenControls }) {
   const groupRef = useRef();
   const mouse = useRef(new Vector2());
   const scrollY = useRef(0);
-  const { scene } = useThree(); // yeh aapka Canvas ka scene hai
+  const [listenTouch, setListenTouch] = touchListenControls;
+  const { scene } = useThree();
 
   useEffect(() => {
     // DataTexture ya solid color assign kar sakte ho
@@ -29,6 +30,8 @@ export function Tunnel({ tunnel, rotation }) {
   }, [scene]);
 
   useEffect(() => {
+    if (!listenTouch) return;
+
     const handleMouseMove = (event) => {
       mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -56,7 +59,7 @@ export function Tunnel({ tunnel, rotation }) {
       document.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [listenTouch]);
 
   useFrame((state, delta) => {
     const { camera } = state;

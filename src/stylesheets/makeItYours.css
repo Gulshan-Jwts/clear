@@ -1,0 +1,137 @@
+.make-section {
+  min-height: 100vh;
+  padding: 120px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: radial-gradient(
+    circle at top,
+    rgba(78, 205, 197, 0.226),
+    transparent 60%
+  );
+}
+
+.make-glass {
+  max-width: 1200px;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+
+  padding: 20px;
+
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35),
+    0 0 60px rgba(255, 107, 107, 0.25), 0 0 80px rgba(78, 205, 196, 0.25),
+    0 0 100px rgba(69, 183, 209, 0.25);
+}
+
+/* VECTOR */
+.make-vector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.make-vector img {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 25px rgba(150, 206, 180, 0.4))
+    drop-shadow(0 0 40px rgba(221, 160, 221, 0.35));
+}
+
+/* CONTENT */
+.make-content h2 {
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+  font-family: "Acme", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background: linear-gradient(
+    90deg,
+    #6bff97,
+    #4ecdc4,
+    #45b7d1,
+    #45dd96,
+    #dfba43,
+    #b045d1
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.make-content p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 520px;
+  margin-bottom: 32px;
+  font-family: "Arimo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* CONTACT BUTTON */
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 26px;
+  border-radius: 16px;
+  font-family: "Arimo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 0.3px;
+
+  background: linear-gradient(135deg, #248d43ff, #2c9992, #8527a1);
+
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.45),
+    0 0 40px rgba(78, 205, 196, 0.45), inset 0 0 12px rgba(255, 255, 255, 0.2);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px #b045d193, 0 0 60px rgba(220, 221, 160, 0.5);
+}
+
+.phone-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .make-glass {
+    grid-template-columns: 1fr;
+    padding: 40px 28px;
+    text-align: center;
+  }
+
+  .make-content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-btn {
+    justify-content: center;
+  }
+}

@@ -19,7 +19,7 @@ void main() {
     float perspectiveScale = uViewportHeight / (dist*10.0);
 
     // Breathing & twinkle effect
-    gl_PointSize = size * perspectiveScale * clamp((2.8 + 2.5 * sin(time * 2.0 + position.x * 0.02)), 1.5, 20.0);
+    gl_PointSize = size * perspectiveScale * clamp((2.95 + 2.8 * sin(time * 2.0 + position.x * 0.02)), 2.5, 20.0);
 
     gl_Position = projectionMatrix * mvPosition;
 }

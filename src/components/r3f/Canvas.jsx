@@ -1,5 +1,5 @@
 import { Canvas as R3FCanvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Tunnel } from "./Tunnel";
 import { Environment, OrbitControls } from "@react-three/drei";
 import ShowCar from "../models/ShowCar";
@@ -7,7 +7,26 @@ import * as THREE from "three";
 
 export function Canvas({ tunnel }) {
   const [steeringAngle, setSteeringAngle] = useState(0);
+  const [listenTouch, setListenTouch] = useState(true);
   const [view, setView] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY >= 100) {
+        setListenTouch(false);
+        console.log("seted as false");
+      } else {
+        console.log("less scrolled,");
+      }
+      console.log("scrolled");
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
 
   return (
     <R3FCanvas
@@ -23,7 +42,11 @@ export function Canvas({ tunnel }) {
       dpr={Math.min(window.devicePixelRatio, 2)}
     >
       <Suspense fallback={null}>
-        <Tunnel tunnel={tunnel} rotation={steeringAngle} />
+        <Tunnel
+          tunnel={tunnel}
+          rotation={steeringAngle}
+          touchListenControls={[listenTouch, setListenTouch]}
+        />
       </Suspense>
 
       <ambientLight intensity={1.7} />
@@ -51,6 +74,7 @@ export function Canvas({ tunnel }) {
         <ShowCar
           position={[0, 0, 0]}
           steeringAngleControls={[steeringAngle, setSteeringAngle]}
+          touchListenControls={[listenTouch, setListenTouch]}
         />
       </Suspense>
       {/* <OrbitControls  /> */}
