@@ -1,4 +1,4 @@
-import "../../stylesheets/MakeItYours.css";
+import "../../stylesheets/makeItYours.css";
 
 export default function MakeItYours() {
   return (
