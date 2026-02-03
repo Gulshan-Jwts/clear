@@ -21,7 +21,7 @@ export function Stars({ tunnel, rotate }) {
       new THREE.Color(0xffeaa7), // warm yellow
       new THREE.Color(0xdda0dd), // plum
     ],
-    []
+    [],
   );
 
   useEffect(() => {
@@ -29,8 +29,7 @@ export function Stars({ tunnel, rotate }) {
 
     materialRef.current.uniforms.uViewportHeight.value =
       size.height * window.devicePixelRatio;
-    console.log(size.height * window.devicePixelRatio)
-  }, [size.height]); 
+  }, [size.height]);
 
   useEffect(() => {
     camera.rotation.y = 450 * (Math.PI / 180);
@@ -167,7 +166,7 @@ export function Stars({ tunnel, rotate }) {
     pointsRef.current.rotation.z = THREE.MathUtils.lerp(
       currentZ,
       targetZ,
-      0.01
+      0.01,
     );
   });
 
@@ -176,7 +175,7 @@ export function Stars({ tunnel, rotate }) {
       time: { value: 0.0 },
       uViewportHeight: { value: size.height * window.devicePixelRatio },
     }),
-    [size.height]
+    [size.height],
   );
 
   return (

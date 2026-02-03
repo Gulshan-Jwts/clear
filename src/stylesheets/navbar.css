@@ -5,7 +5,7 @@
   transform: translateX(-50%);
   z-index: 50;
 
-  width: 92vw;
+  width: 82vw;
   max-width: 1200px;
 
   padding: 12px 18px;
@@ -24,13 +24,18 @@
 
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
 
-  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    border 0.3s ease;
 }
 
 /* Scroll glow */
 .navbar.nav-scrolled {
   border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 30px rgba(99, 102, 241, 0.4);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.45),
+    0 0 30px rgba(99, 102, 241, 0.4);
 }
 
 /* LEFT */
@@ -63,7 +68,9 @@
 
   cursor: pointer;
 
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .navbar-icon:hover {

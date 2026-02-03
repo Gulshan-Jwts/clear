@@ -31,8 +31,10 @@
 
   border: 1px solid rgba(255, 255, 255, 0.2);
 
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35),
-    0 0 60px rgba(255, 107, 107, 0.25), 0 0 80px rgba(78, 205, 196, 0.25),
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    0 0 60px rgba(255, 107, 107, 0.25),
+    0 0 80px rgba(78, 205, 196, 0.25),
     0 0 100px rgba(69, 183, 209, 0.25);
 }
 
@@ -40,6 +42,7 @@
 .make-vector {
   display: flex;
   align-items: center;
+  max-width: 80vw;
   justify-content: center;
 }
 
@@ -101,15 +104,21 @@
 
   background: linear-gradient(135deg, #248d43ff, #2c9992, #8527a1);
 
-  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.45),
-    0 0 40px rgba(78, 205, 196, 0.45), inset 0 0 12px rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 10px 30px rgba(255, 107, 107, 0.45),
+    0 0 40px rgba(78, 205, 196, 0.45),
+    inset 0 0 12px rgba(255, 255, 255, 0.2);
 
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .contact-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 40px #b045d193, 0 0 60px rgba(220, 221, 160, 0.5);
+  box-shadow:
+    0 14px 40px #b045d193,
+    0 0 60px rgba(220, 221, 160, 0.5);
 }
 
 .phone-icon {

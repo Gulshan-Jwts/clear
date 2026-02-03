@@ -15,6 +15,9 @@ export function Canvas({ tunnel }) {
       if (window.scrollY >= 100) {
         setListenTouch(false);
         console.log("seted as false");
+      } else if (window.scrollY < 100) {
+        setListenTouch(true);
+        console.log("seted as true");
       } else {
         console.log("less scrolled,");
       }
@@ -30,7 +33,7 @@ export function Canvas({ tunnel }) {
 
   return (
     <R3FCanvas
-      camera={{ position: [0, 0, 0], fov: 85 }}
+      camera={{ position: [0, 0, 0], fov: 90 }}
       gl={{
         antialias: tunnel.settings.antialiasing,
         powerPreference: "high-performance",
